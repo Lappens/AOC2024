@@ -1,12 +1,10 @@
 package main
 
 import (
+	utils "aoc2024"
 	"bufio"
 	"fmt"
-	"log"
-	"os"
 	"slices"
-	"strconv"
 	"strings"
 )
 
@@ -16,11 +14,7 @@ func main() {
 	sum := 0
 
 	// Open .txt
-	file, err := os.Open("01/input.txt")
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer file.Close()
+	file := utils.ReadFile("01/input.txt")
 
 	// Read every Line and split
 	scanner := bufio.NewScanner(file)
@@ -29,18 +23,11 @@ func main() {
 		//fmt.Printf("%q\n", test)
 
 		//Convert first and second number to int
-		firstNumber, err := strconv.Atoi(text[0])
-		if err != nil {
-			log.Fatal(err)
-		}
-		secondNumber, err := strconv.Atoi(text[3])
-		if err != nil {
-			log.Fatal(err)
-		}
+		textToNumbers := utils.StringArrayToInt(text[0])
 
 		// Append numbers to Arrays
-		arr1 = append(arr1, firstNumber)
-		arr2 = append(arr2, secondNumber)
+		arr1 = append(arr1, textToNumbers[0])
+		arr2 = append(arr2, textToNumbers[1])
 	}
 	// fmt.Println(arr1)
 

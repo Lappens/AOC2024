@@ -1,8 +1,10 @@
 package utils
 
 import (
+	"fmt"
 	"log"
 	"os"
+	"slices"
 	"strconv"
 )
 
@@ -24,4 +26,11 @@ func StringArrayToInt(array []string) []int {
 		arrInt[index] = i
 	}
 	return arrInt
+}
+
+func RemoveFromArray(slice []int, index int) []int {
+	ret := slices.Clone(slice)
+	ret = slices.Delete(ret, index, index+1)
+	fmt.Println(slice, ret)
+	return ret
 }
